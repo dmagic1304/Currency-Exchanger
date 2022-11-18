@@ -24,3 +24,9 @@ function printResults(apiData) {
   ul.append(li);
 }
 
+function printError(apiError) {
+  const ul = document.querySelector('ul');
+  let li = document.createElement('li');
+  li.append(`There was an error ${apiError}`);
+  ul.append(li);
+}
