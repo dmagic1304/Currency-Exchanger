@@ -17,18 +17,16 @@ function getExchange() {
 
 //UI Logic
 function printResults(apiData) {
-  const p = document.getElementById('result');
+  const displayParagraph = document.getElementById('result');
   const enteredAmount = document.getElementById('usd').value;
   const selectedCurrency = document.getElementById('exchange-option').value;
   const exchangeRate = apiData.conversion_rates[selectedCurrency];
-  p.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}. For ${enteredAmount} USD you will get ${enteredAmount * exchangeRate} ${selectedCurrency} `);
+  displayParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}. For ${enteredAmount} USD you will get ${enteredAmount * exchangeRate} ${selectedCurrency} `);
 }
 
 function printError(apiError) {
-  const ul = document.querySelector('ul');
-  let li = document.createElement('li');
-  li.append(`There was an error ${apiError}`);
-  ul.append(li);
+  const displayParagraph = document.getElementById('result');
+  displayParagraph.append(`Not able to get requested data due to: ${apiError}`);
 }
 
 function handleSubmit(e) {
