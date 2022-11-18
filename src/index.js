@@ -30,3 +30,12 @@ function printError(apiError) {
   li.append(`There was an error ${apiError}`);
   ul.append(li);
 }
+
+function handleSubmit(e) {
+  e.preventDefault();
+  getExchange();
+}
+
+window.addEventListener('load' function() {
+  this.document.querySelector('form').addEventListener('submit', handleSubmit);
+});
