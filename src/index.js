@@ -23,7 +23,7 @@ function printResults(apiData) {
   if (exchangeRate) {
   displayParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}. For ${enteredAmount} USD you will get ${enteredAmount * exchangeRate} ${selectedCurrency} `);
   } else {
-    displayParagraph.append(`Unable to get data for selected currency (${selectedCurrency}). Please make sure to select a valid currency from the list!`);
+    displayParagraph.append(`Selected currency does not exist (${selectedCurrency}). Please make sure to select a valid currency from the list!`);
   }
 }
 
@@ -34,7 +34,14 @@ function printError(apiError) {
 
 function handleSubmit(e) {
   e.preventDefault();
-  getExchange();
+  const displayParagraph = document.getElementById('result');
+  const enteredAmount = document.getElementById('usd').value;
+  if (enteredAmount > 0) {
+    getExchange();
+  } else {    
+    displayParagraph.innerHTML = null;
+    displayParagraph.append(`Please enter a numeric value bigger than 0!`);
+  }
 }
 
 window.addEventListener('load', function() {
