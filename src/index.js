@@ -2,6 +2,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ExchangeService from "./js/currency-exchange-service.js";
+import currencyList from './js/currency-list.js';
 
 function getExchange() {
   ExchangeService.getExchange()
