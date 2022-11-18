@@ -2,7 +2,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ExchangeService from "./js/currency-exchange-service.js";
-// import currencyList from './js/currency-list.js';
+import currencyList from './js/currency-list.js';
 
 function getExchange() {
   ExchangeService.getExchange()
@@ -19,18 +19,19 @@ function getExchange() {
     });
 }
 
-function printResults(apiData) {
+function printResults() {
   const rateParagraph = document.getElementById('rate');
   const totalParagraph = document.getElementById('total');
   const enteredAmount = document.getElementById('usd').value;
   const selectedCurrency = document.getElementById('exchange-option').value;
-  const exchangeRate = apiData.conversion_rates[selectedCurrency];
+  const exchangeRate = sessionStorage.getItem(selectedCurrency);
+  // const exchangeRate = apiData.conversion_rates[selectedCurrency];
   rateParagraph.innerHTML = null;
   totalParagraph.innerHTML= null;
 
   if (exchangeRate) {
     rateParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}.`)
-    totalParagraph.append(`For ${enteredAmount} USD you will get ${(enteredAmount * exchangeRate).toFixed(2)} ${selectedCurrency}`);
+    totalParagraph.append(`For $${enteredAmount} USD you will get ${(enteredAmount * exchangeRate).toFixed(2)} ${selectedCurrency}`);
   } else {
     rateParagraph.append(`Selected currency does not exist (${selectedCurrency}). Please make sure to select a valid currency from the list!`);
   }
@@ -48,7 +49,6 @@ function handleSubmit(e) {
   const enteredAmount = document.getElementById('usd').value;
   if (enteredAmount > 0) {
     printResults();
-    // getExchange();
   } else {    
     rateParagraph.innerHTML = null;    
     totalParagraph.innerHTML= null;
@@ -58,5 +58,6 @@ function handleSubmit(e) {
 
 window.addEventListener('load', function() {
   getExchange();
+  currencyList(this.sessionStorage);
   this.document.querySelector('form').addEventListener('submit', handleSubmit);
 });
