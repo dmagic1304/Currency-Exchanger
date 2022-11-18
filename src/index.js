@@ -17,11 +17,11 @@ function getExchange() {
 
 //UI Logic
 function printResults(apiData) {
-  const ul = document.querySelector('ul');
-  let li = document.createElement('li');
-  const selection = document.getElementById('exchange-option').value;
-  li.append(`It will be ${apiData.conversion_rates[selection]}`);
-  ul.append(li);
+  const p = document.getElementById('result');
+  const enteredAmount = document.getElementById('usd').value;
+  const selectedCurrency = document.getElementById('exchange-option').value;
+  const exchangeRate = apiData.conversion_rates[selectedCurrency];
+  p.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}. For ${enteredAmount} USD you will get ${enteredAmount * exchangeRate} ${selectedCurrency} `);
 }
 
 function printError(apiError) {
