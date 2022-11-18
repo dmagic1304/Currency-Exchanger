@@ -2,13 +2,17 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ExchangeService from "./js/currency-exchange-service.js";
-import currencyList from './js/currency-list.js';
+// import currencyList from './js/currency-list.js';
 
 function getExchange() {
   ExchangeService.getExchange()
     .then(function(response) {
       if (response.result === 'success') {
-        printResults(response);
+        let keys = Object.keys(response.conversion_rates);
+        let values = Object.values(response.conversion_rates);
+        for(let i = 0; i < keys.length; i++) {
+        sessionStorage.setItem(keys[i], values[i]);
+        }
       } else {
         printError(response);
       }
@@ -43,7 +47,8 @@ function handleSubmit(e) {
   const totalParagraph = document.getElementById('total');
   const enteredAmount = document.getElementById('usd').value;
   if (enteredAmount > 0) {
-    getExchange();
+    printResults();
+    // getExchange();
   } else {    
     rateParagraph.innerHTML = null;    
     totalParagraph.innerHTML= null;
@@ -52,5 +57,6 @@ function handleSubmit(e) {
 }
 
 window.addEventListener('load', function() {
+  getExchange();
   this.document.querySelector('form').addEventListener('submit', handleSubmit);
 });
