@@ -15,33 +15,38 @@ function getExchange() {
 }
 
 function printResults(apiData) {
-  const displayParagraph = document.getElementById('result');
+  const rateParagraph = document.getElementById('rate');
+  const totalParagraph = document.getElementById('total');
   const enteredAmount = document.getElementById('usd').value;
   const selectedCurrency = document.getElementById('exchange-option').value;
   const exchangeRate = apiData.conversion_rates[selectedCurrency];
-  displayParagraph.innerHTML = null;
+  rateParagraph.innerHTML = null;
+  totalParagraph.innerHTML= null;
 
   if (exchangeRate) {
-    displayParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}. For ${enteredAmount} USD you will get ${enteredAmount * exchangeRate} ${selectedCurrency} `);
+    rateParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}.`)
+    totalParagraph.append(`For ${enteredAmount} USD you will get ${(enteredAmount * exchangeRate).toFixed(2)} ${selectedCurrency}`);
   } else {
-    displayParagraph.append(`Selected currency does not exist (${selectedCurrency}). Please make sure to select a valid currency from the list!`);
+    rateParagraph.append(`Selected currency does not exist (${selectedCurrency}). Please make sure to select a valid currency from the list!`);
   }
 }
 
 function printError(apiError) {
-  const displayParagraph = document.getElementById('result');
-  displayParagraph.append(`Not able to get requested data due to: ${apiError}`);
+  const rateParagraph = document.getElementById('rate');
+  rateParagraph.append(`Not able to get requested data due to: ${apiError}`);
 }
 
 function handleSubmit(e) {
   e.preventDefault();
-  const displayParagraph = document.getElementById('result');
+  const rateParagraph = document.getElementById('rate');
+  const totalParagraph = document.getElementById('total');
   const enteredAmount = document.getElementById('usd').value;
   if (enteredAmount > 0) {
     getExchange();
   } else {    
-    displayParagraph.innerHTML = null;
-    displayParagraph.append(`Please enter a numeric value bigger than 0!`);
+    rateParagraph.innerHTML = null;    
+    totalParagraph.innerHTML= null;
+    rateParagraph.append(`Please enter a numeric value bigger than 0!`);
   }
 }
 

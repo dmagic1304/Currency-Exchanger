@@ -10,21 +10,26 @@
     <h1>currency exchange</h1>
   </div>
   <div class="container main">
-    <form>
-      <label for="usd">Enter the amount in USD $</label>
-      <input type="number" id="usd" required placeholder="amount"><br>
-      <label for="exchange-option">Please select the currency:</label>
-      <select name="exchange-option" id="exchange-option">
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
-        <option value="CAD">CAD</option>
-        <option value="NZD">NZD</option>
-        <option value="AUD">AUD</option>        
-      </select><br>
-      <button class="btn btn-primary" type="submit">Get exchange rate</button>
-    </form>
+    <div class="row input">
+      <div class="col">
+        <form>
+          <label for="usd">Enter the amount in USD $</label>
+          <input type="number" id="usd" required placeholder="amount"><br>
+          <label for="exchange-option">Please select the currency:</label>
+          <select name="exchange-option" id="exchange-option">
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="CAD">CAD</option>
+            <option value="NZD">NZD</option>
+            <option value="AUD">AUD</option>        
+          </select><br>
+          <button class="btn btn-primary" type="submit">Get exchange rate</button>
+        </form>
+      </div>
+    </div>
     <div class="results">
-      <p id="result"></p>
+      <p id="rate"></p>    
+      <p id="total"></p>
     </div>
   </div>
 </body>
