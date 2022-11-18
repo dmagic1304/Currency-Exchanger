@@ -4,20 +4,24 @@
   <title>Currency Exchanger</title>
 </head>
 <body>
-  <h1>Get the latest currency exchange rates and see how much you get for your $$$</h1>  
-  <div class="container">
+  <div class="headder">
+    <h1>Get the latest rates at</h1>
+    <p id="title">TAKE IT or LEAVE IT</p>
+    <h1>currency exchange</h1>
+  </div>
+  <div class="container main">
     <form>
       <label for="usd">Enter the amount in USD $</label>
-      <input type="number" id="usd" required placeholder="amount">
+      <input type="number" id="usd" required placeholder="amount"><br>
       <label for="exchange-option">Please select the currency:</label>
       <select name="exchange-option" id="exchange-option">
         <option value="EUR">EUR</option>
         <option value="GBP">GBP</option>
         <option value="CAD">CAD</option>
         <option value="NZD">NZD</option>
-        <option value="test">test</option>        
-      </select>
-      <button type="submit">Get exchange rate</button>
+        <option value="AUD">AUD</option>        
+      </select><br>
+      <button class="btn btn-primary" type="submit">Get exchange rate</button>
     </form>
     <div class="results">
       <p id="result"></p>

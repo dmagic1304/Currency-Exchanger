@@ -2,4 +2,22 @@ body {
   background-image: url(./../assets/images/background.jpg);
   background-size: cover;
   background-attachment: fixed;
+  color: white;
+  text-align: center;
 }
+
+.headder {
+  margin-bottom: 60px;
+}
+
+#title {
+  font-size: 50px;
+  font-weight: 800;
+  font-family: 'BhuTuka Expanded One', cursive;
+}
+
+.main {
+  text-align: center;
+  padding: 15px;
+}
+

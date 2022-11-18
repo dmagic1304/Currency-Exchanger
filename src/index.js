@@ -20,8 +20,9 @@ function printResults(apiData) {
   const selectedCurrency = document.getElementById('exchange-option').value;
   const exchangeRate = apiData.conversion_rates[selectedCurrency];
   displayParagraph.innerHTML = null;
+
   if (exchangeRate) {
-  displayParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}. For ${enteredAmount} USD you will get ${enteredAmount * exchangeRate} ${selectedCurrency} `);
+    displayParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}. For ${enteredAmount} USD you will get ${enteredAmount * exchangeRate} ${selectedCurrency} `);
   } else {
     displayParagraph.append(`Selected currency does not exist (${selectedCurrency}). Please make sure to select a valid currency from the list!`);
   }
