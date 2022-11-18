@@ -36,6 +36,6 @@ function handleSubmit(e) {
   getExchange();
 }
 
-window.addEventListener('load' function() {
+window.addEventListener('load', function() {
   this.document.querySelector('form').addEventListener('submit', handleSubmit);
 });
