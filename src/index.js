@@ -11,8 +11,9 @@ function getExchange() {
         let keys = Object.keys(response.conversion_rates);
         let values = Object.values(response.conversion_rates);
         for(let i = 0; i < keys.length; i++) {
-        sessionStorage.setItem(keys[i], values[i]);
+          sessionStorage.setItem(keys[i], values[i]);
         }
+        currencyList(sessionStorage);
       } else {
         printError(response);
       }
@@ -25,12 +26,11 @@ function printResults() {
   const enteredAmount = document.getElementById('usd').value;
   const selectedCurrency = document.getElementById('exchange-option').value;
   const exchangeRate = sessionStorage.getItem(selectedCurrency);
-  // const exchangeRate = apiData.conversion_rates[selectedCurrency];
   rateParagraph.innerHTML = null;
   totalParagraph.innerHTML= null;
 
   if (exchangeRate) {
-    rateParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}.`)
+    rateParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}.`);
     totalParagraph.append(`For $${enteredAmount} USD you will get ${(enteredAmount * exchangeRate).toFixed(2)} ${selectedCurrency}`);
   } else {
     rateParagraph.append(`Selected currency does not exist (${selectedCurrency}). Please make sure to select a valid currency from the list!`);
@@ -57,7 +57,6 @@ function handleSubmit(e) {
 }
 
 window.addEventListener('load', function() {
-  getExchange();
-  currencyList(this.sessionStorage);
+  getExchange();  
   this.document.querySelector('form').addEventListener('submit', handleSubmit);
 });
