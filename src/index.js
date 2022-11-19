@@ -27,8 +27,7 @@ function printResults() {
   const enteredAmount = document.getElementById('usd').value;
   const selectedCurrency = document.getElementById('exchange-option').value;
   const exchangeRate = sessionStorage.getItem(selectedCurrency);
-  rateParagraph.innerHTML = null;
-  totalParagraph.innerHTML= null;
+  clearOutput();
 
   if (exchangeRate) {
     rateParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}`);
@@ -44,8 +43,7 @@ function printForeignResults() {
   const enteredAmount = document.getElementById('usd').value;
   const selectedCurrency = document.getElementById('exchange-option').value;
   const exchangeRate = sessionStorage.getItem(selectedCurrency);
-  rateParagraph.innerHTML = null;
-  totalParagraph.innerHTML= null;
+  clearOutput();
 
   if (exchangeRate) {
     rateParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}`);
@@ -56,8 +54,16 @@ function printForeignResults() {
 }
 
 function printError(apiError) {
+  clearOutput();
+  const errorParagraph = document.getElementById('rate');
+  errorParagraph.append(`Not able to get requested data due to ${apiError}`);
+}
+
+function clearOutput() {
   const rateParagraph = document.getElementById('rate');
-  rateParagraph.append(`Not able to get requested data due to: ${apiError}`);
+  const totalParagraph = document.getElementById('total');
+  rateParagraph.innerHTML = null;
+  totalParagraph.innerHTML= null;
 }
 
 function handleSubmit(e) {
@@ -65,15 +71,13 @@ function handleSubmit(e) {
   const button = document.getElementById('switch').value;
   console.log('test' + button);
   const rateParagraph = document.getElementById('rate');
-  const totalParagraph = document.getElementById('total');
   const enteredAmount = document.getElementById('usd').value;
   if (enteredAmount > 0 && button === '0') {
     printResults();
   } else if (enteredAmount > 0 && button === '1') {
     printForeignResults();
   } else {    
-    rateParagraph.innerHTML = null;    
-    totalParagraph.innerHTML= null;
+    clearOutput();
     rateParagraph.append(`Please enter a numeric value bigger than 0!`);
   }
 }
@@ -82,4 +86,5 @@ window.addEventListener('load', function() {
   getExchange();  
   document.querySelector('form').addEventListener('submit', handleSubmit);
   document.getElementById('switch').addEventListener('click', directionSwitch);
+  document.getElementById('switch').addEventListener('click', clearOutput);
 });
