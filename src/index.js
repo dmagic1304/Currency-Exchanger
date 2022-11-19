@@ -30,7 +30,7 @@ function printResults() {
   totalParagraph.innerHTML= null;
 
   if (exchangeRate) {
-    rateParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}.`);
+    rateParagraph.append(`Current exchange rate for ${selectedCurrency} is ${exchangeRate}`);
     totalParagraph.append(`For $${enteredAmount} USD you will get ${(enteredAmount * exchangeRate).toFixed(2)} ${selectedCurrency}`);
   } else {
     rateParagraph.append(`Selected currency does not exist (${selectedCurrency}). Please make sure to select a valid currency from the list!`);
