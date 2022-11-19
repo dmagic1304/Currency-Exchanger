@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ExchangeService from "./js/currency-exchange-service.js";
 import currencyList from './js/currency-list.js';
+import directionSwitch from './js/exchange-direction.js';
 
 function getExchange() {
   ExchangeService.getExchange()
@@ -58,5 +59,6 @@ function handleSubmit(e) {
 
 window.addEventListener('load', function() {
   getExchange();  
-  this.document.querySelector('form').addEventListener('submit', handleSubmit);
+  document.querySelector('form').addEventListener('submit', handleSubmit);
+  document.getElementById('switch').addEventListener('click', directionSwitch);
 });

@@ -13,7 +13,7 @@
     <div class="row input">
       <div class="col">
         <form>
-          <label for="usd">Enter the amount in USD $</label>
+          <label id="input-label" for="usd">Enter the amount in USD $</label>
           <input type="number" id="usd" required placeholder="amount"><br>
           <label for="exchange-option">Please select the currency:</label>
           <select name="exchange-option" id="exchange-option">
@@ -26,7 +26,7 @@
       <p id="rate"></p>    
       <p id="total"></p>
     </div>
-    <button class="btn btn-secondary">Convert foreign currency to USD</button>
+    <button id="switch" class="btn btn-secondary">Convert foreign currency to USD</button>
   </div>
 </body>
 </html>
