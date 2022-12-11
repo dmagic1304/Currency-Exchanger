@@ -22,7 +22,7 @@ _This website was created by for purpose of demonstrating the use of API calls a
 
 * _Clone [this](https://github.com/dmagic1304/Currency-Exchanger) repositiory to your desktop_
 * _To get your own unique API Key, visit [ExchangeRate-API](https://www.exchangerate-api.com/) site. Input your email address and click the "Get Free Key" button. This will prompt you to create an account, and upon account creation you will receive your API Key_
-* _Once you have your API key, go to the Currency-exchange folder that you cloned and create .env folder in the root project directory then store the API key inside using the following format **API_KEY='Your-unique-API-key'**_
+* _Once you have your API key, go to the Currency-exchange folder that you cloned and create .env file in the root project directory then store the API key inside using the following format **API_KEY='Your-unique-API-key'**_
 * _Open the terminal in Currency-exchange folder located on your desktop_
 * _Run "npm install" command in the terminal to install required dependencies_
 * _Once the install is compleated, run "npm run start" command in the terminal to open the application in browser_
